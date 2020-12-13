@@ -20,7 +20,9 @@ def sales_by_sources_report(connection):
         ORDER BY purchases DESC;
     """
 
-    return pd.read_sql(sql_query, connection)
+    df = pd.read_sql(sql_query, connection)
+    df.columns = ['source', 'purchases']
+    return df
 
 
 def main():
